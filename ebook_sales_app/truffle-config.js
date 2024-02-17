@@ -50,7 +50,6 @@ const HDWalletProvider = require('@truffle/hdwallet-provider');
 
 const mnemonic = process.env.MNEMONIC;
 const infuraProjectId = process.env.INFURA_PROJECT_ID;
-const rinkebyEndpoint = `https://rinkeby.infura.io/v3/${infuraProjectId}`;
 
 module.exports = {
   /**
@@ -102,14 +101,17 @@ module.exports = {
     //   network_id: 2111,   // This network is yours, in the cloud.
     //   production: true    // Treats this network as if it was a public net. (default: false)
     // }
-    rinkeby: {
-      provider: () => new HDWalletProvider(mnemonic, rinkebyEndpoint),
-      network_id: 4,       // Rinkeby's id
-      gas: 5500000,        // Rinkeby has a lower block limit than mainnet
-      confirmations: 2,    // # of confs to wait between deployments. (default: 0)
-      timeoutBlocks: 200,  // # of blocks before a deployment times out  (minimum/default: 50)
-      skipDryRun: true     // Skip dry run before migrations? (default: false for public nets )
-    }
+    sepolia: {
+      provider: () => new HDWalletProvider(
+        mnemonic,
+        `https://sepolia.infura.io/v3/${infuraProjectId}`
+      ),
+      network_id: 11155111, // Sepolia's network id
+      gas: 5500000, // Adjust gas limit as necessary
+      confirmations: 2,
+      timeoutBlocks: 200,
+      skipDryRun: true // Recommended for public networks
+    },
   },
 
   // Set default mocha options here, use special reporters, etc.

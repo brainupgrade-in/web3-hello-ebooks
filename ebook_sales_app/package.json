@@ -11,7 +11,7 @@
     "build": "cd client && npm run build",
     "test": "truffle test",
     "compile": "truffle compile",
-    "migrate": "truffle migrate --network rinkeby",
+    "migrate": "truffle migrate --network sepolia",
     "deploy": "truffle deploy"
   },
   "author": "Your Name",
